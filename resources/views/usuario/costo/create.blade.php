@@ -1,0 +1,54 @@
+@extends('administrador.layouts.template')
+@section('header')
+Crear Nuevo Costo<br>
+<span style="color: red"><h5>solo se podra crear costos de formulas ya creadas en <b>Gestionar Formulas</b></h5></span>
+@endsection
+@section('content')
+    <div class="container">
+
+        <div class="card o-hnameden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Crear Costo</h1>
+                            </div>
+                            @if ($errors->any())
+                            {{-- en caso de no eingresar las credenciales de acceso del administrador(muestra un error) --}}
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+                            <form class="user" action="{{ route('admin.costo.store') }}" method="POST">
+                                {{ csrf_field() }}
+                               {{--  <div class="form-group">
+                                    <select class="form-select" name="id_formula" aria-label="Seleccione una formula">
+                                        @foreach ($formulas as $formula )
+                                        <option value="{{ $formula->id }}">{{ $formula->nombre }}</option>
+                                        @endforeach
+                                    </select>
+                                </div> --}}
+
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-user" name="concepto"
+                                    placeholder="concepto">
+                                </div>
+
+                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Agregar">
+                                <hr>
+                            </form>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+@endsection

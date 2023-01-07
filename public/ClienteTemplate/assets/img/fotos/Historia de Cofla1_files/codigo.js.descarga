@@ -1,0 +1,17 @@
+/* 
+Problema A
+cofla repprobo en dos materias asi que tiene que enviar sus datos personales,
+para poder dar el examen de mesa
+debe contener los siguientes datos personales:
+- nombre,email y materia adeudada
+- validar email y nombres
+- enviar al servidor d manera pulida
+
+solucion:
+*/
+const nombre =document.getElementById("nombre");
+const  email=document.getElementById("email");
+const materia =document.getElementById("materia");
+const enviar =document.getElementById("btn-envian");
+
+

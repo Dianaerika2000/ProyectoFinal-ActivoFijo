@@ -1,0 +1,924 @@
+.wp-socializer:after {
+    clear: both;
+    content: '';
+    display: block
+}
+
+.wp-socializer.wpsr-share-icons {
+    margin: 1em 0
+}
+.wpsr-follow-icons {
+    position: fixed;
+    z-index: 999999;
+    line-height: 0
+}
+.wpsr-follow-icons.sr-fb-hl .sr-fb-title {
+    position: absolute;
+    bottom: 0;
+    transform: translateX(-100%);
+    left: -1em;
+    top: 50%;
+    margin: 0
+}
+
+.wpsr-follow-icons.sr-fb-vl {
+    text-align: center;
+    line-height: 1.5q
+}
+
+.wpsr-follow-icons.sr-fb-vl .sr-fb-title {
+    width: 5em;
+    text-align: center;
+    line-height: 1.5
+}
+.wpsr-follow-icons:hover .wpsr-fb-close {
+    display: block
+}
+
+.wpsr-closed.wpsr-follow-icons .sr-fb-title {
+    display: none
+}
+
+.wpsr-closed.wpsr-follow-icons .sr-followbar {
+    display: none
+}
+
+.wpsr-closed.wpsr-follow-icons .wpsr-fb-close {
+    display: block
+}
+.sr-fb-rm {
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%)
+}
+.wpsr-follow-icons.sr-fb-vl {
+    text-align: center;
+    line-height: 1.5q
+}
+
+.wpsr-follow-icons.sr-fb-vl .sr-fb-title {
+    width: 5em;
+    text-align: center;
+    line-height: 1.5
+}
+.sr-fb-vl.sr-fb-br .wpsr-fb-close {
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    padding-bottom: 0
+}
+
+
+
+
+.wpsr-share-icons .socializer {
+    margin: 0 1em
+}
+.wpsr-sharebar .socializer {
+    line-height: 0
+}
+.socializer span a img {
+    background: none !important;
+    border: none !important;
+    max-width: 100% !important
+}
+.socializer .sr-share-menu>a,
+.socializer .sr-share-menu>a:visited {
+    background-color: #ff6500;
+    color: #fff
+}
+.socializer .ctext:empty {
+    display: none !important
+}
+/*!
+ * Socializer - CSS library for social media buttons
+ * Copyright (c) 2021 Aakash Chakravarthy - www.aakashweb.com
+ * MIT license
+ */
+.socializer {
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    flex-wrap: wrap
+}
+
+.socializer>* {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    line-height: 0
+}
+
+.socializer a {
+    font-family: sans-serif !important;
+    display: inline-block;
+    border: 0;
+    text-align: center;
+    text-decoration: none;
+    width: 16px;
+    height: 16px;
+    line-height: 18px;
+    font-size: 8px;
+    border-style: solid;
+    box-sizing: content-box;
+    transition: all .5s;
+    -webkit-transition: all .2s;
+    transition-timing-function: ease-out;
+    -webkit-transition-timing-function: ease-out
+}
+
+.socializer a>* {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    margin: 0
+}
+
+.socializer:after {
+    content: '';
+    clear: both;
+    display: block
+}
+.socializer .sr-addtofavorites a,
+.socializer .sr-addtofavorites a:visited {
+    color: #f9a600;
+    border-color: #f9a600;
+    background-color: #f9a600
+}
+
+.socializer .sr-behance a,
+.socializer .sr-behance a:visited {
+    color: #1769ff;
+    border-color: #1769ff;
+    background-color: #1769ff
+}
+
+.socializer .sr-bitbucket a,
+.socializer .sr-bitbucket a:visited {
+    color: #205081;
+    border-color: #205081;
+    background-color: #205081
+}
+
+.socializer .sr-blogger a,
+.socializer .sr-blogger a:visited {
+    color: #ff6501;
+    border-color: #ff6501;
+    background-color: #ff6501
+}
+
+.socializer .sr-codepen a,
+.socializer .sr-codepen a:visited {
+    color: #000;
+    border-color: #000;
+    background-color: #000
+}
+
+.socializer .sr-comments a,
+.socializer .sr-comments a:visited {
+    color: #333;
+    border-color: #333;
+    background-color: #333
+}
+
+.socializer .sr-delicious a,
+.socializer .sr-delicious a:visited {
+    color: #3274d1;
+    border-color: #3274d1;
+    background-color: #3274d1
+}
+
+.socializer .sr-deviantart a,
+.socializer .sr-deviantart a:visited {
+    color: #475c4d;
+    border-color: #475c4d;
+    background-color: #475c4d
+}
+
+.socializer .sr-digg a,
+.socializer .sr-digg a:visited {
+    color: #000;
+    border-color: #000;
+    background-color: #000
+}
+
+.socializer .sr-discord a,
+.socializer .sr-discord a:visited {
+    color: #7289da;
+    border-color: #7289da;
+    background-color: #7289da
+}
+
+.socializer .sr-dribbble a,
+.socializer .sr-dribbble a:visited {
+    color: #ea4c89;
+    border-color: #ea4c89;
+    background-color: #ea4c89
+}
+
+.socializer .sr-email a,
+.socializer .sr-email a:visited {
+    color: #000;
+    border-color: #000;
+    background-color: #000
+}
+
+.socializer .sr-etsy a,
+.socializer .sr-etsy a:visited {
+    color: #f1641e;
+    border-color: #f1641e;
+    background-color: #f1641e
+}
+
+.socializer .sr-facebook a,
+.socializer .sr-facebook a:visited {
+    color: #1977f3;
+    border-color: #1977f3;
+    background-color: #1977f3
+}
+
+.socializer .sr-fbmessenger a,
+.socializer .sr-fbmessenger a:visited {
+    color: #2998ff;
+    border-color: #2998ff;
+    background-color: #2998ff
+}
+
+.socializer .sr-flickr a,
+.socializer .sr-flickr a:visited {
+    color: #1c9be9;
+    border-color: #1c9be9;
+    background-color: #1c9be9
+}
+
+.socializer .sr-github a,
+.socializer .sr-github a:visited {
+    color: #333;
+    border-color: #333;
+    background-color: #333
+}
+
+.socializer .sr-google a,
+.socializer .sr-google a:visited {
+    color: #3a7cec;
+    border-color: #3a7cec;
+    background-color: #3a7cec
+}
+
+.socializer .sr-googleplus a,
+.socializer .sr-googleplus a:visited {
+    color: #db483b;
+    border-color: #db483b;
+    background-color: #db483b
+}
+
+.socializer .sr-hackernews a,
+.socializer .sr-hackernews a:visited {
+    color: #ff6500;
+    border-color: #ff6500;
+    background-color: #ff6500
+}
+
+.socializer .sr-houzz a,
+.socializer .sr-houzz a:visited {
+    color: #4dbc15;
+    border-color: #4dbc15;
+    background-color: #4dbc15
+}
+
+.socializer .sr-instagram a,
+.socializer .sr-instagram a:visited {
+    color: #e23367;
+    border-color: #e23367;
+    background-color: #e23367
+}
+
+.socializer .sr-line a,
+.socializer .sr-line a:visited {
+    color: #00c300;
+    border-color: #00c300;
+    background-color: #00c300
+}
+
+.socializer .sr-linkedin a,
+.socializer .sr-linkedin a:visited {
+    color: #0274b3;
+    border-color: #0274b3;
+    background-color: #0274b3
+}
+
+.socializer .sr-medium a,
+.socializer .sr-medium a:visited {
+    color: #02b875;
+    border-color: #02b875;
+    background-color: #02b875
+}
+
+.socializer .sr-mix a,
+.socializer .sr-mix a:visited {
+    color: #ff8226;
+    border-color: #ff8226;
+    background-color: #ff8226
+}
+
+.socializer .sr-odnoklassniki a,
+.socializer .sr-odnoklassniki a:visited {
+    color: #f2720c;
+    border-color: #f2720c;
+    background-color: #f2720c
+}
+
+.socializer .sr-patreon a,
+.socializer .sr-patreon a:visited {
+    color: #e85b46;
+    border-color: #e85b46;
+    background-color: #e85b46
+}
+
+.socializer .sr-paypal a,
+.socializer .sr-paypal a:visited {
+    color: #0070ba;
+    border-color: #0070ba;
+    background-color: #0070ba
+}
+
+.socializer .sr-pdf a,
+.socializer .sr-pdf a:visited {
+    color: #e61b2e;
+    border-color: #e61b2e;
+    background-color: #e61b2e
+}
+
+.socializer .sr-phone a,
+.socializer .sr-phone a:visited {
+    color: #1a73e8;
+    border-color: #1a73e8;
+    background-color: #1a73e8
+}
+
+.socializer .sr-pinterest a,
+.socializer .sr-pinterest a:visited {
+    color: #cb2027;
+    border-color: #cb2027;
+    background-color: #cb2027
+}
+
+.socializer .sr-pocket a,
+.socializer .sr-pocket a:visited {
+    color: #ef4056;
+    border-color: #ef4056;
+    background-color: #ef4056
+}
+
+.socializer .sr-print a,
+.socializer .sr-print a:visited {
+    color: #6d9f00;
+    border-color: #6d9f00;
+    background-color: #6d9f00
+}
+
+.socializer .sr-reddit a,
+.socializer .sr-reddit a:visited {
+    color: #ff5600;
+    border-color: #ff5600;
+    background-color: #ff5600
+}
+
+.socializer .sr-renren a,
+.socializer .sr-renren a:visited {
+    color: #005eac;
+    border-color: #005eac;
+    background-color: #005eac
+}
+
+.socializer .sr-rss a,
+.socializer .sr-rss a:visited {
+    color: #ff7b0a;
+    border-color: #ff7b0a;
+    background-color: #ff7b0a
+}
+
+.socializer .sr-shortlink a,
+.socializer .sr-shortlink a:visited {
+    color: #333;
+    border-color: #333;
+    background-color: #333
+}
+
+.socializer .sr-skype a,
+.socializer .sr-skype a:visited {
+    color: #00aff0;
+    border-color: #00aff0;
+    background-color: #00aff0
+}
+
+.socializer .sr-sms a,
+.socializer .sr-sms a:visited {
+    color: #35d54f;
+    border-color: #35d54f;
+    background-color: #35d54f
+}
+
+.socializer .sr-snapchat a,
+.socializer .sr-snapchat a:visited {
+    color: #fffc00;
+    border-color: #fffc00;
+    background-color: #fffc00
+}
+
+.socializer .sr-soundcloud a,
+.socializer .sr-soundcloud a:visited {
+    color: #f50;
+    border-color: #f50;
+    background-color: #f50
+}
+
+.socializer .sr-stackoverflow a,
+.socializer .sr-stackoverflow a:visited {
+    color: #f48024;
+    border-color: #f48024;
+    background-color: #f48024
+}
+
+.socializer .sr-stumbleupon a,
+.socializer .sr-stumbleupon a:visited {
+    color: #eb4823;
+    border-color: #eb4823;
+    background-color: #eb4823
+}
+
+.socializer .sr-quora a,
+.socializer .sr-quora a:visited {
+    color: #b92b27;
+    border-color: #b92b27;
+    background-color: #b92b27
+}
+
+.socializer .sr-telegram a,
+.socializer .sr-telegram a:visited {
+    color: #179cde;
+    border-color: #179cde;
+    background-color: #179cde
+}
+
+.socializer .sr-tiktok a,
+.socializer .sr-tiktok a:visited {
+    color: #010101;
+    border-color: #010101;
+    background-color: #010101
+}
+
+.socializer .sr-tumblr a,
+.socializer .sr-tumblr a:visited {
+    color: #314358;
+    border-color: #314358;
+    background-color: #314358
+}
+
+.socializer .sr-twitch a,
+.socializer .sr-twitch a:visited {
+    color: #4b367c;
+    border-color: #4b367c;
+    background-color: #4b367c
+}
+
+.socializer .sr-twitter a,
+.socializer .sr-twitter a:visited {
+    color: #1da1f2;
+    border-color: #1da1f2;
+    background-color: #1da1f2
+}
+
+.socializer .sr-viber a,
+.socializer .sr-viber a:visited {
+    color: #574e92;
+    border-color: #574e92;
+    background-color: #574e92
+}
+
+.socializer .sr-vimeo a,
+.socializer .sr-vimeo a:visited {
+    color: #00adef;
+    border-color: #00adef;
+    background-color: #00adef
+}
+
+.socializer .sr-vkontakte a,
+.socializer .sr-vkontakte a:visited {
+    color: #4c75a3;
+    border-color: #4c75a3;
+    background-color: #4c75a3
+}
+
+.socializer .sr-wechat a,
+.socializer .sr-wechat a:visited {
+    color: #7bb32e;
+    border-color: #7bb32e;
+    background-color: #7bb32e
+}
+
+.socializer .sr-weibo a,
+.socializer .sr-weibo a:visited {
+    color: #e6162d;
+    border-color: #e6162d;
+    background-color: #e6162d
+}
+
+.socializer .sr-whatsapp a,
+.socializer .sr-whatsapp a:visited {
+    color: #60b82d;
+    border-color: #60b82d;
+    background-color: #60b82d
+}
+
+.socializer .sr-xing a,
+.socializer .sr-xing a:visited {
+    color: #006567;
+    border-color: #006567;
+    background-color: #006567
+}
+
+.socializer .sr-yahoomail a,
+.socializer .sr-yahoomail a:visited {
+    color: #4a00a1;
+    border-color: #4a00a1;
+    background-color: #4a00a1
+}
+
+.socializer .sr-youtube a,
+.socializer .sr-youtube a:visited {
+    color: red;
+    border-color: red;
+    background-color: red
+}
+
+.socializer .sr-more>a,
+.socializer .sr-more>a:visited {
+    color: green;
+    border-color: green;
+    background-color: green
+}
+.sr-bdr-sm.socializer a {
+    border-width: 1px
+}
+
+.sr-bdr-md.socializer a {
+    border-width: 2px
+}
+
+.sr-bdr-lg.socializer a {
+    border-width: 3px
+}
+
+.sr-bdr-none.socializer a {
+    border-width: 0
+}
+
+.sr-bdr-white.socializer a,
+.sr-bdr-white.socializer a:visited {
+    border-color: #fff
+}
+
+.sr-bdr-dark.socializer a,
+.sr-bdr-dark.socializer a:visited {
+    border-color: #000
+}
+
+.sr-bdr-grey.socializer a,
+.sr-bdr-grey.socializer a:visited {
+    border-color: #ccc
+}
+
+.sr-bg-white.socializer a,
+.sr-bg-white.socializer a:visited {
+    background-color: #fff
+}
+
+.sr-bg-dark.socializer a,
+.sr-bg-dark.socializer a:visited {
+    background-color: #333
+}
+
+.sr-bg-grey.socializer a,
+.sr-bg-grey.socializer a:visited {
+    background-color: #ccc
+}
+
+.sr-bg-none.socializer a,
+.sr-bg-none.socializer a:visited {
+    background-color: transparent
+}
+
+.sr-icon-white.socializer a,
+.sr-icon-white.socializer a:visited {
+    color: #fff
+}
+
+.sr-icon-dark.socializer a,
+.sr-icon-dark.socializer a:visited {
+    color: #333
+}
+
+.sr-icon-grey.socializer a,
+.sr-icon-grey.socializer a:visited {
+    color: #ccc
+}
+
+.sr-sw-1.socializer a {
+    box-shadow: 0 0 .2em rgba(0, 0, 0, .3)
+}
+
+.sr-sw-2.socializer a {
+    box-shadow: inset 0 -.1em .1em rgba(0, 0, 0, .3)
+}
+
+.sr-sw-3.socializer a {
+    box-shadow: 0 -.1em .1em rgba(0, 0, 0, .3)
+}
+
+.sr-sw-icon-1.socializer a i {
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .5)
+}
+.socializer.sr-pad>:last-child {
+    margin: 0
+}
+
+.sr-more .socializer {
+    background: #fff;
+    padding: .5em;
+    position: absolute;
+    display: none;
+    box-shadow: 0 2px 6px -2px;
+    z-index: 9999
+}
+
+.sr-more .socializer:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    border: .25em solid;
+    border-color: transparent transparent #fff transparent;
+    top: -.5em;
+    left: .5em
+}
+
+.sr-more .socializer:after {
+    content: '';
+    clear: both;
+    display: block
+}
+
+.sr-more .socializer>* {
+    margin: 0 0 .5em 0
+}
+
+.sr-more .socializer>:last-child {
+    margin-bottom: 0
+}
+
+.sr-more:hover .socializer {
+    display: block
+}
+wpsr-closed.wpsr-follow-icons .sr-followbar {
+    display: none
+}
+.sr-48px {
+    min-height: 48px
+}
+
+.sr-48px a {
+    width: 48px;
+    height: 48px;
+    line-height: 48px;
+    font-size: 24px
+}
+
+.sr-48px.sr-font-sm a {
+    font-size: 16px
+}
+
+.sr-48px.sr-font-lg a {
+    font-size: 32px
+}
+.sr-vertical.sr-48px {
+    width: 48px
+}
+
+.sr-vertical.sr-48px>* {
+    width: 48px
+}
+.sr-circle a {
+    border-radius: 50%
+}
+
+.sr-circle .sr-text-in a,
+.sr-circle.sr-text-in a {
+    border-radius: 1em
+}
+.sr-zoom a:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+    z-index: 9999
+}
+
+.sr-zoom a:active {
+    -webkit-transform: scale(.9);
+    transform: scale(.9)
+}
+.sr-fluid.sr-pad {
+    border-spacing: .25em
+}
+.sr-vertical.sr-pad>* {
+    margin: 0 0 .5em 0
+}
+.sr-pad>* {
+    margin-right: .5em
+}
+.socializer.sr-pad>:last-child {
+    margin: 0
+}
+.sr-vertical.sr-count-2 a {
+    height: auto
+}
+
+.sr-vertical.sr-count-2 span.ctext {
+    display: block;
+    font-size: .6em;
+    border-radius: 0;
+    padding: .5em
+}
+
+.sr-vertical.sr-count-3 a {
+    height: auto
+}
+
+.sr-vertical.sr-count-3 span.ctext {
+    display: block;
+    font-size: .6em;
+    border-radius: 0;
+    border-top: 1px solid;
+    padding: .5em;
+    border-left: 0
+}
+.sr-vertical.sr-bb-1 span.ctext {
+    display: block;
+    position: static;
+    width: 100%;
+    margin: 0;
+    font-size: .7em;
+    line-height: 1;
+    padding: .3em 0;
+    margin-top: -.3em
+}
+.sr-vertical {
+    width: 16px;
+    flex-direction: column
+}
+
+.sr-vertical.sr-32px {
+    width: 32px
+}
+
+.sr-vertical.sr-32px>* {
+    width: 32px
+}
+
+.sr-vertical.sr-40px {
+    width: 40px
+}
+
+.sr-vertical.sr-40px>* {
+    width: 40px
+}
+
+.sr-vertical.sr-48px {
+    width: 48px
+}
+
+.sr-vertical.sr-48px>* {
+    width: 48px
+}
+
+.sr-vertical.sr-64px {
+    width: 64px
+}
+
+.sr-vertical.sr-64px>* {
+    width: 64px
+}
+
+.sr-vertical.sr-pad>* {
+    margin: 0 0 .5em 0
+}
+
+.sr-vertical .sr-text-in {
+    line-height: 1
+}
+
+.sr-vertical .sr-text-in a {
+    padding: 0;
+    width: inherit
+}
+
+.sr-vertical .sr-text-in a>* {
+    padding: 0
+}
+
+.sr-vertical .sr-text-in .text {
+    display: none
+}
+.wpsr-fb-close {
+    position: absolute;
+    right: 0;
+    cursor: pointer;
+    display: none;
+    line-height: 0;
+    padding: 1em;
+    opacity: .2
+}
+
+.wpsr-fb-close:hover {
+    opacity: .8
+}
+
+.wpsr-follow-icons:hover .wpsr-fb-close {
+   
+ display: block
+}
+.wpsr-closed.wpsr-follow-icons .wpsr-fb-close {
+    display: block
+}
+
+.sr-fb-bm .wpsr-fb-close,
+.sr-fb-bl .wpsr-fb-close {
+    right: 0;
+    transform: translate(100%, -100%);
+    padding-bottom: 0
+}
+
+.sr-fb-vl.sr-fb-br .wpsr-fb-close {
+    left: 0;
+    bottom: 0;
+    transform: translateX(-100%);
+    padding-bottom: 0
+}
+
+.sr-fb-hl.sr-fb-br .wpsr-fb-close {
+    top: 0;
+    right: 0;
+    transform: translateY(-100%)
+}
+
+.sr-fb-hl.sr-fb-tr .wpsr-fb-close {
+    padding-right: 0
+}
+
+.wpsr-closed.sr-fb-tl .wpsr-fb-close,
+.wpsr-closed.sr-fb-lm .wpsr-fb-close {
+    right: -24px;
+    transform: translateY(0%)
+}
+wpsr-sb-close .wpsr-bar-icon {
+    opacity: .2
+}
+
+.wpsr-sb-close:hover .wpsr-bar-icon {
+    opacity: .8
+}
+.wpsr-bar-icon {
+    line-height: 0;
+    background: #000;
+    display: inline-block;
+    padding: 3px;
+    border-radius: 50%;
+    vertical-align: middle;
+    fill: #fff
+}
+
+.wpsr-bar-icon .i-open {
+    display: none
+}
+
+.wpsr-closed .wpsr-bar-icon .i-close {
+    display: none
+}
+
+.wpsr-closed .wpsr-bar-icon .i-open {
+    display: block
+}
+
+.wpsr-closed .wpsr-bar-icon {
+    padding: 5px
+}
+.wpsr-bar-icon .i-open {
+    display: none
+}
+
+.wpsr-closed .wpsr-bar-icon .i-open {
+    display: block
+}
+.wpsr-closed .wpsr-bar-icon .i-close {
+    display: none
+}

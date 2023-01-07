@@ -1,0 +1,48 @@
+body{
+    color: rgb(161, 157, 157);
+    font-family: sans-serif;
+}
+/* .contenedor{
+    padding: 30px;
+    background: red;
+} */
+
+input{
+display: block;
+margin: 9px auto;
+width: 100%;
+padding: 6px;
+box-sizing: border-box;
+background: rgb(220, 219, 243);
+border: none;
+outline: none !important;
+transition: background 0.3s;
+}
+input[type="submit"]{
+    width: 20%;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 3px;
+
+}
+input[type="submit"]:hover{
+    border-radius: 3px;
+    background: rgb(28, 218, 100);
+}
+input:hover{
+   background: rgb(157, 185, 221);
+}
+input::placeholder{
+    color: rgb(49, 47, 47);
+}
+form{
+    width: 85%;
+    margin: auto;
+    background: rgb(75, 72, 241);
+    padding: 30px;
+}
+h2{
+    color:white;
+    padding-left: auto;
+}
+
