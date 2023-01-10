@@ -24,7 +24,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="row g-3" action="{{ route('admin.usuario.store') }}" method="POST">
+                            <form class="row g-3 user" action="{{ route('admin.usuario.store') }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="col-md-6">
                                     <label for="inputName" class="form-label">Nombre(s)</label>

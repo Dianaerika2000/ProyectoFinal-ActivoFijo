@@ -62,12 +62,6 @@ class ResponsableController extends Controller
                 'Apellido'   =>   $request->get('Apellido')
             )
         );
-
-        //$estado = new Responsable($validateData);
-        //$estado->nombre=$request->get('nombre');
-        //$request->cod_adm=$request->get('cod_adm');
-        //$request->nombre=$request->get('nombre');
-        //$request->save();
         return redirect()->route('admin.responsable');
     }
 
@@ -107,18 +101,8 @@ class ResponsableController extends Controller
             'nombre'=>['required','max:100'],
             'Apellido'=>['required','max:100'],
         ]);
-        //$asignarId= Responsable::select('cod_adm')->orderBy('cod_adm', 'desc')->first();
-        /* validar que no haya dos nombre iguales */
-        /*
-        $consulta=Responsable::where('nombre',$request->nombre)->where('codigoAsignado','!=',$request->codigoAsignado)->first();
-        if(!is_null($consulta)){
-            return back()->withErrors(['error','El nombre introducido ya existe']);
 
-        }*/
         $responsable->update($validateData);
-
-        //$estado->nombre=$request->get('nombre');
-        //$estado->save();
         return redirect()->route('admin.responsable');
     }
 
