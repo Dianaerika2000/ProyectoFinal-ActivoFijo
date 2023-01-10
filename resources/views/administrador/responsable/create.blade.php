@@ -24,7 +24,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="row g-3  needs-validation" novalidate
+                            <form class="row g-3  needs-validation" 
                                 action="{{ route('admin.responsable.store') }}" method="POST">
                                 {{ csrf_field() }}
 

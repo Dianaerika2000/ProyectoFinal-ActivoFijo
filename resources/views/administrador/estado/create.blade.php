@@ -24,28 +24,34 @@ Crear Nuevo Estado
                                     </ul>
                                 </div>
                             @endif
-                            <form class="user" action="{{ route('admin.estado.store') }}" method="POST">
+                            <form class="row g-3  needs-validation" novalidate action="{{ route('admin.estado.store') }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="nombre">Nombre
-                                        <span class="required">*</span>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="inputNombre">Nombre
                                     </label>
                                     <div class="col-md-12 col-sm-12 ">
-                                        <input type="text" id="nombre" name="nombre" required="required" class="form-control">
+                                        <input type="text" id="inputNombre" name="nombre" class="form-control" required>
+                                        <div class="invalid-feedback">
+                                            El campo Nombre es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
 
                                 <div class="item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="descripcion">Descripción
-                                        <span class="required">*</span>
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align" for="inputDescripcion">Descripción
                                     </label>
                                     <div class="col-md-12 col-sm-12 ">
-                                        <input type="text" id="descripcion" name="descripcion" required="required" class="form-control">
+                                        <input type="text" id="inputDescripcion" name="descripcion" class="form-control" required>
+                                        <div class="invalid-feedback">
+                                            El campo Descripción es obligatorio.
+                                        </div>
                                     </div>
                                 </div>
-
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Agregar Estado">
-                                <hr>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Registrar</button>
+                                    <a type="button" class="btn btn-secondary "
+                                        href="{{ route('admin.estado') }}">Cancelar</a>
+                                </div>
                             </form>
                             <hr>
                         </div>
