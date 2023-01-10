@@ -1,6 +1,6 @@
 @extends('administrador.layouts.template')
 @section('header')
-Registrar Nuevo Usuario
+    Registrar Nuevo Usuario
 @endsection
 @section('content')
     <div class="container">
@@ -11,11 +11,11 @@ Registrar Nuevo Usuario
                 <div class="row">
                     <div class="col-lg">
                         <div class="p-5">
-                            <div class="text-center">
+                            {{-- <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">Registrar Usuario</h1>
-                            </div>
+                            </div> --}}
                             @if ($errors->any())
-                            {{-- en caso de no eingresar las credenciales de acceso del administrador(muestra un error) --}}
+                                {{-- en caso de no eingresar las credenciales de acceso del administrador(muestra un error) --}}
                                 <div class="alert alert-danger">
                                     <ul>
                                         @foreach ($errors->all() as $error)
@@ -24,88 +24,75 @@ Registrar Nuevo Usuario
                                     </ul>
                                 </div>
                             @endif
-                            <form class="user" action="{{ route('admin.usuario.store') }}" method="POST">
+                            <form class="row g-3" action="{{ route('admin.usuario.store') }}" method="POST">
                                 {{ csrf_field() }}
-                                {{--
-                                <div class="form-group">
-                                    <select class="form-select" name="id_rol" aria-label="Seleccione un rol">
-                                        <option selected>Seleccine la carrera del usuario</option>
-                                        @foreach ($roles as $rol )
-                                        <option value="{{ $rol->id }}">{{ $rol->r_tip }}</option>
-                                        @endforeach
-                                    </select>
+                                <div class="col-md-6">
+                                    <label for="inputName" class="form-label">Nombre(s)</label>
+                                    <input type="text" class="form-control" id="inputName" 
+                                    name="nombre"
+                                    required>
                                 </div>
-                                --}}
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="nombre"
-                                           placeholder="Nombre">
+                                <div class="col-md-6">
+                                    <label for="inputLastname" class="form-label">Apellido(s)</label>
+                                    <input type="text" class="form-control" id="inputLastname"
+                                    name="apellido" required>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="apellido"
-                                           placeholder="Apellido">
+                                <div class="col-md-6">
+                                    <label for="inputCarnet" class="form-label">Carnet de Identidad</label>
+                                    <input type="text" class="form-control" id="inputCarnet" 
+                                    name="ci" required>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="ci"
-                                           placeholder="Carnet de Identidad">
+                                <div class="col-md-6">
+                                    <label for="inputNacionalidad" class="form-label">Nacionalidad</label>
+                                    <input type="text" class="form-control" id="inputNacionalidad"
+                                    name="nacionalidad" required>
                                 </div>
-
-                                <div class="form-group">
-                                    <select class="form-select" name="genero" aria-label="Seleccione un sexo">
+                                <div class="col-md-2">
+                                    <label for="inputGenero" class="form-label">Genero</label>
+                                    <select id="inputGenero" class="form-select" name="genero" required>
                                         <option selected value="M">Masculino</option>
                                         <option value="F">Femenino</option>
                                         <option value="X">No definido</option>
                                     </select>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="nacionalidad"
-                                           placeholder="Nacionalidad">
+                                <div class="col-md-4">
+                                    <label for="inputPhone" class="form-label">Celular</label>
+                                    <input type="tel" class="form-control" id="inputPhone" name="celular" required>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="direccion"
-                                           placeholder="Dirección">
+                                <div class="col-md-6">
+                                    <label for="inputAddress" class="form-label">Direccion</label>
+                                    <input type="text" class="form-control" id="inputAddress" name="direccion" required>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="number" class="form-control form-control-user" name="celular"
-                                           placeholder="Celular">
+                                <div class="col-md-4">
+                                    <label for="inputEmail" class="form-label">Correo Electronico</label>
+                                    <input type="email" class="form-control" id="inputEmail" name="email" required>
+                                  </div>
+                                <div class="col-md-4">
+                                    <label for="inputPassword" class="form-label">Contraseña</label>
+                                    <input type="password" class="form-control" id="inputPassword" name="password" required>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" name="email"
-                                           placeholder="Email">
+                                <div class="col-md-4">
+                                    <label for="inputConfirmPassword" class="form-label">Confirmar Contraseña</label>
+                                    <input type="password" class="form-control" id="inputConfirmPassword" name="password1" required>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="password"
-                                           placeholder="Contraseña">
+                                <div class="col-12">
+                                    <h2 class="h5">Listado de Roles</h2>
+                                    <div class="form-group">
+                                        @foreach ($roles as $role)
+                                            <div>
+                                                <label>
+                                                    {!! Form::checkbox('roles[]', $role->id, null, ['class' => 'mr-1']) !!}
+                                                    {{ $role->name }}
+                                                </label>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control form-control-user" name="password1"
-                                           placeholder="Confirmar contraseña">
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Agregar</button>
+                                    <a type="button" class="btn btn-secondary" href="{{route('admin.usuarios')}}">Cancelar</a>
                                 </div>
-
-                                <h2 class="h5">Listado de Roles</h2>
-                                <div class="form-group">
-                                    @foreach($roles as $role)
-                                        <div>
-                                            <label>
-                                                {!! Form::checkbox('roles[]',$role->id, null ,['class'=>'mr-1']) !!}
-                                                {{$role->name}}
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Agregar">
-                                <hr>
                             </form>
-                            <hr>
                         </div>
                     </div>
                 </div>
