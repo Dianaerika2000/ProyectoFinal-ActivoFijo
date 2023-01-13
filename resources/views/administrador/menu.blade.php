@@ -474,5 +474,5 @@ if ($pos !== false) {
             $('#lng').val(lng);
         });
     </script>
-        
-    @endsection
+    
+@endsection

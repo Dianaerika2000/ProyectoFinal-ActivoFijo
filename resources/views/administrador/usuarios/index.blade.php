@@ -1,7 +1,10 @@
-@extends('administrador.layouts.template')
-@section('header')
-    Gestionar Usuarios
-@endsection
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Gestionar Usuario</h1>
+@stop
 
 @section('content')
     <!-- Begin Page Content -->
@@ -75,7 +78,11 @@
             </div>
         </div>
     </footer>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
 
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -108,4 +115,4 @@
             })
         });
     </script>
-@endsection
+@stop

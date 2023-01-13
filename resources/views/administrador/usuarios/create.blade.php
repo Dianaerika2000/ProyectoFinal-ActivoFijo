@@ -1,7 +1,11 @@
-@extends('administrador.layouts.template')
-@section('header')
-    Registrar Nuevo Usuario
-@endsection
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Registrar Nuevo Usuario</h1>
+@stop
+
 @section('content')
     <div class="container">
 
@@ -100,4 +104,10 @@
         </div>
 
     </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+

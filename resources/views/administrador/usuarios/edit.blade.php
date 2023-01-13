@@ -1,7 +1,11 @@
-@extends('administrador.layouts.template')
-@section('header')
-Editar Usuario {{ $usuario->nombre }}{{ $usuario->apellido}}
-@endsection
+@extends('adminlte::page')
+
+@section('title', 'Dashboard')
+
+@section('content_header')
+    <h1>Dashboard</h1>
+@stop
+
 @section('content')
     <div class="container">
         @if(session('info'))
@@ -107,4 +111,8 @@ Editar Usuario {{ $usuario->nombre }}{{ $usuario->apellido}}
         </div>
 
     </div>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
