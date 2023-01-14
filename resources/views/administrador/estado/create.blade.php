@@ -1,19 +1,18 @@
-@extends('administrador.layouts.template')
-@section('header')
-Crear Nuevo Estado
-@endsection
-@section('content')
-    <div class="container">
+@extends('adminlte::page')
 
-        <div class="card o-hnameden border-0 shadow-lg my-5">
+@section('title', 'Estado')
+
+@section('content')
+    <div class="container pt-5">
+        <div class="card o-hnameden border-0 shadow-lg">
+            <div class="card-header py-3">
+                <h4 class="m-0">Registrar Nuevo Estado</h4>
+            </div>
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg">
                         <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Crear Estado</h1>
-                            </div>
                             @if ($errors->any())
                             {{-- en caso de no eingresar las credenciales de acceso del administrador(muestra un error) --}}
                                 <div class="alert alert-danger">
@@ -24,7 +23,7 @@ Crear Nuevo Estado
                                     </ul>
                                 </div>
                             @endif
-                            <form class="row g-3  needs-validation" novalidate action="{{ route('admin.estado.store') }}" method="POST">
+                            <form class="g-3  needs-validation" novalidate action="{{ route('admin.estado.store') }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="item form-group">
                                     <label class="col-form-label col-md-3 col-sm-3 label-align" for="inputNombre">Nombre
@@ -62,3 +61,28 @@ Crear Nuevo Estado
 
     </div>
 @endsection
+
+@section('js')
+    {{-- Validaciones form --}}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+@stop

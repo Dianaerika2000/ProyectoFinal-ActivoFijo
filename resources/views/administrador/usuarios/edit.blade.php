@@ -1,20 +1,19 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
-
-@section('content_header')
-    <h1>Dashboard</h1>
-@stop
+@section('title', 'Usuario')
 
 @section('content')
-    <div class="container">
+    <div class="container pt-5">
         @if(session('info'))
             <div class="alert alert-success">
                 <strong>{{session('info')}}</strong>
             </div>
         @endif
 
-        <div class="card o-hnameden border-0 shadow-lg my-5">
+        <div class="card o-hnameden border-0 shadow-lg">
+            <div class="card-header py-3">
+                <h4 class="m-0">Editar Usuario</h4>
+            </div>
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
@@ -113,6 +112,27 @@
     </div>
 @stop
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+@section('js')
+    {{-- Validaciones form --}}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
 @stop

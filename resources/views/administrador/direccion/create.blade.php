@@ -1,13 +1,8 @@
-@extends('administrador.layouts.template')
-@section('header')
-Registrar Nueva Dirección
-@endsection
+@extends('adminlte::page')
+
+@section('title', 'Dirección')
+
 @section('content')
-    <!-- Google Font
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYG5g2aJ9TjMlbYk7E_VuFYKSvHC1Ee6Y&libraries=places" type="text/javascript"></script>
-    -->
     <style>
         #map-canvas {
             width: 500px;
@@ -17,17 +12,17 @@ Registrar Nueva Dirección
         }
     </style>
 
-    <div class="container">
+    <div class="container pt-5">
 
-        <div class="card o-hnameden border-0 shadow-lg my-5">
+        <div class="card o-hnameden border-0 shadow-lg">
+            <div class="card-header py-3">
+                <h4 class="m-0">Registrar Nueva Dirección</h4>
+            </div>
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg">
                         <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Registrar Dirección</h1>
-                            </div>
                             @if ($errors->any())
                             {{-- en caso de no eingresar las credenciales de acceso del administrador(muestra un error) --}}
                                 <div class="alert alert-danger">
@@ -75,9 +70,10 @@ Registrar Nueva Dirección
 
                                     </div>
                                 </div>
-
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Agregar">
-                                <hr>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Agregar</button>
+                                    <a type="button" class="btn btn-secondary" href="{{route('admin.direccion')}}">Cancelar</a>
+                                </div>
                             </form>
                             <hr>
                         </div>
@@ -88,6 +84,11 @@ Registrar Nueva Dirección
 
     </div>
 
+    
+@endsection
+
+@section('js')
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYG5g2aJ9TjMlbYk7E_VuFYKSvHC1Ee6Y&libraries=places" type="text/javascript"></script>
     <script>
         var map = new google.maps.Map(document.getElementById('map-canvas'), {
             center: {
@@ -125,4 +126,26 @@ Registrar Nueva Dirección
             $('#lng').val(lng);
         });
     </script>
-@endsection
+    {{-- Validaciones form --}}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+@stop

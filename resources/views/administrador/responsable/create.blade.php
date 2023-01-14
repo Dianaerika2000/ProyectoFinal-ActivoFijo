@@ -1,10 +1,13 @@
-@extends('administrador.layouts.template')
-@section('header')
-    Registrar Nuevo Responsable
-@endsection
+@extends('adminlte::page')
+
+@section('title', 'Responsable')
+
+@section('content_header')
+    <h1>Registrar Nuevo Responsable</h1>
+@stop
+
 @section('content')
     <div class="container">
-
         <div class="card o-hnameden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
@@ -24,7 +27,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="row g-3  needs-validation" 
+                            <form class="needs-validation" novalidate 
                                 action="{{ route('admin.responsable.store') }}" method="POST">
                                 {{ csrf_field() }}
 
@@ -71,4 +74,29 @@
         </div>
 
     </div>
-@endsection
+@stop
+
+@section('js')
+    {{-- Validaciones form --}}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+@stop

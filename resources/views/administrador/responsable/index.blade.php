@@ -1,18 +1,18 @@
-@extends('administrador.layouts.template')
+@extends('adminlte::page')
 
-@section('header')
-    Gestionar Responsables
-@endsection
+@section('title', 'Responsable')
+
+@section('plugins.Sweetalert2', true)
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container-fluid pt-3">
 
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Responsables</h6>
+                <h4 class="m-0">Gestionar Responsables</h4>
             </div>
             <div class="card-body">
                 <a href="{{ route('admin.responsable.create') }}" class="btn btn-primary">
@@ -21,7 +21,7 @@
                 </a>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Código administrativo</th>
                                 <th>Nombre</th>
@@ -37,12 +37,12 @@
                                     <td>{{ $responsable->Apellido }}</td>
                                     <td>
                                         <a href="{{ route('admin.responsable.edit', $responsable->id) }}"
-                                            class="btn btn-xs btn-primary"><i class="bi bi-pencil-square"></i></a>
+                                            class="btn btn-primary"><i class="bi bi-pencil-square"></i></a>
 
                                         <form action="{{ route('admin.responsable.delete', $responsable->id) }}"
                                             method="POST" class="form-delete">
                                             {{ csrf_field() }}
-                                            <button class="btn btn-xs btn-danger"><i class="bi bi-trash"></i></button>
+                                            <button class="btn btn-danger"><i class="bi bi-trash"></i></button>
                                         </form>
 
                                     </td>
@@ -54,7 +54,6 @@
 
             </div>
         </div>
-
     </div>
     <footer class="card border-left-success border-bottom-secondary">
         <div class="container my-auto">
@@ -67,9 +66,12 @@
     <!-- /.container-fluid -->
 @endsection
 
-@section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@section('css')
+    {{-- Boostrap icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+@stop
 
+@section('js')
     @if (session('eliminar') == 'ok')
         <script>
             Swal.fire(

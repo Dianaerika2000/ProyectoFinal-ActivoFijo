@@ -123,18 +123,18 @@ public function login(Request $request){
     return back()->withErrors(['error'=>'la contraseña es incorrecta o usted no es un usuario ordinario']);
 }
 
-public function menu(){
-    $usuarios=Usuario::all();
-    $contador_menu=Contador::where('nombre',"contador_menu")->first();
-    $contador_menu->update(['count'=>$contador_menu->count+1]);
+// public function menu(){
+//     $usuarios=Usuario::all();
+//     $contador_menu=Contador::where('nombre',"contador_menu")->first();
+//     $contador_menu->update(['count'=>$contador_menu->count+1]);
 
-    $puntos2=[];
-    $insumos = insumo::all();
-    foreach ($insumos as $insumo) {
-        $puntos2[] = ['name' => $insumo->nombre, 'y' => floatval($insumo->detalleinsumo->precio), 'drilldown' => $insumo->nombre];
-    }
-    return view('usuario.menu',compact('usuarios','contador_menu'),["costo_formulita"=>json_encode($puntos2)]);
-}
+//     $puntos2=[];
+//     $insumos = insumo::all();
+//     foreach ($insumos as $insumo) {
+//         $puntos2[] = ['name' => $insumo->nombre, 'y' => floatval($insumo->detalleinsumo->precio), 'drilldown' => $insumo->nombre];
+//     }
+//     return view('usuario.menu',compact('usuarios','contador_menu'),["costo_formulita"=>json_encode($puntos2)]);
+// }
 
 public function logout(){
     Auth::guard('usuario')->logout();

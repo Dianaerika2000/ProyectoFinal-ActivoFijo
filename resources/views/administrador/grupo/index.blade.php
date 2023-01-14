@@ -1,8 +1,12 @@
-@extends('administrador.layouts.template')
+@extends('adminlte::page')
 
-@section('header')
-    Gestionar Grupo
-@endsection
+@section('title', 'Grupo')
+
+@section('plugins.Sweetalert2', true)
+
+@section('content_header')
+    <h1>Gestionar Grupo</h1>
+@stop
 
 @section('content')
     <!-- Begin Page Content -->
@@ -21,7 +25,7 @@
                 </a>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Nombre</th>
                                 <th>Acciones</th>
@@ -76,6 +80,11 @@
         }
     </script>
 @endsection
+
+@section('css')
+    {{-- Boostrap icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+@stop
 
 @section('js')
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

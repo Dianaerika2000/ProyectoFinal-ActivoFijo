@@ -1,20 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Usuarios')
 
-@section('content_header')
-    <h1>Gestionar Usuario</h1>
-@stop
+@section('plugins.Sweetalert2', true)
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
-
-
+    <div class="container-fluid pt-4">
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Usuarios</h6>
+                <h4 class="m-0">Gestionar Usuarios</h4>
             </div>
             <div class="card-body">
                 <a href="{{ route('admin.usuario.create') }}" class="btn btn-primary">
@@ -81,12 +77,11 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    {{-- Boostrap icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 @stop
 
 @section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     @if (session('eliminar') == 'ok')
         <script>
             Swal.fire(

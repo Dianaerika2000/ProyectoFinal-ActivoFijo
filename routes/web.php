@@ -34,6 +34,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/logout',[AdministradorController::class,'logout'])->name('admin.logout');
         Route::get('/menu',[AdministradorController::class, 'menu'])->name('admin.menu');
         /* Route::post('/costo_formula',[AdministradorController::class,'costo_formula'])->name('admin.costo_formula'); */
+        
+        /* Estadisticas */
+        Route::get('/estadisticas',[AdministradorController::class, 'estadisticas'])->name('admin.estadisticas');
         Route::get('/busqueda',[AdministradorController::class, 'busqueda'])->name('admin.busqueda');
 
         /* gestionar usuarios */
@@ -127,6 +130,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/informes/update/{informe}', [InformeController::class, 'update'])->name('admin.informe.update');
         //Route::post('fotografias/delete/{fotografia}', [InformeController::class, 'delete'])->name('admin.fotografia.delete');
          //Route::resource('informe', InformeController::class);
+
+        
 
     });
 

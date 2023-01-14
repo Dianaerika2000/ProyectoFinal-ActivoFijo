@@ -14,8 +14,8 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
-    'title_prefix' => '',
+    'title' => '',
+    'title_prefix' => 'Bien Inmueble |',
     'title_postfix' => '',
 
     /*
@@ -387,7 +387,7 @@ return [
             ],
         ],
         [
-            'text'    => 'Adm. de Informes y Reportes',
+            'text'    => 'Adm. de Revaluos',
             'icon'    => 'fas fa-fw fa-folder-open',
             'submenu' => [
                 [
@@ -400,10 +400,22 @@ return [
                     'icon'    => 'fas fa-fw fa-book',
                     'route'  => 'admin.informe',
                 ],
+            ],
+        ],
+        [
+            'text'    => 'Adm. de Reportes y Estadisticas',
+            'icon'    => 'fas fa-fw fa-folder-open',
+            'submenu' => [
                 [
                     'text' => 'Gestionar Reportes',
                     'icon'    => 'fas fa-fw fa-file',
-                    'route'  => 'admin.informe',
+                    'url' => '#',
+                    // 'route'  => 'admin.informe',
+                ],
+                [
+                    'text' => 'Estadisticas',
+                    'icon'    => 'fas fa-fw fa-signal',
+                    'route'  => 'admin.estadisticas',
                 ],
             ],
         ],
@@ -501,7 +513,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js',
+                    'location' => '//cdn.jsdelivr.net/npm/chart.js',
                 ],
             ],
         ],
@@ -511,7 +523,7 @@ return [
                 [
                     'type' => 'js',
                     'asset' => false,
-                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@8',
+                    'location' => '//cdn.jsdelivr.net/npm/sweetalert2@11',
                 ],
             ],
         ],

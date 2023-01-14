@@ -1,7 +1,11 @@
-@extends('administrador.layouts.template')
-@section('header')
-Editar {{ $grupo->nombre }}
-@endsection
+@extends('adminlte::page')
+
+@section('title', 'Grupo')
+
+@section('content_header')
+    <h1>Editar Grupo</h1>
+@stop
+
 @section('content')
     <div class="container">
 
@@ -23,7 +27,7 @@ Editar {{ $grupo->nombre }}
                                     </ul>
                                 </div>
                             @endif
-                            <form class="row g-3  needs-validation" novalidate action="{{ route('admin.grupo.update',$grupo->id) }}" method="POST">
+                            <form class="g-3  needs-validation" novalidate action="{{ route('admin.grupo.update',$grupo->id) }}" method="POST">
                                 {{ csrf_field() }}
 
                                <div class="item form-group">

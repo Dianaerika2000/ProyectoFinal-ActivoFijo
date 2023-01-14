@@ -1,23 +1,25 @@
-@extends('administrador.layouts.template')
+@extends('adminlte::page')
 
-@section('header')
-    Gestionar Direcciones
-@endsection
+@section('title', 'Direcciones')
+
+@section('plugins.Sweetalert2', true)
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
-
-
+    <div class="container-fluid pt-4">
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Direcciones</h6>
+                <h4 class="m-0">Gestionar Direcciones</h4>
             </div>
             <div class="card-body">
+                <a href="{{ route('admin.direccion.create') }}" class="btn btn-primary">
+                    <span class="text">Nueva Direccion</span>
+                    <i class="bi bi-plus-circle-fill"></i>
+                </a>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Ubicación</th>
                                 <th>Acciones</th>
@@ -30,40 +32,25 @@
                                     <td>{{ $direccion->ubicacion }}</td>
                                     <td>
                                         <a href="{{ route('admin.direccion.edit', $direccion->id) }}"
-                                            class="btn btn-warning btn-icon-split">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-arrow-right"></i>
-                                            </span>
+                                            class="btn btn-primary"><i class="bi bi-pencil-square"></i>
                                             <span class="text">Editar Dirección</span>
                                         </a>
 
-                                        <form action="{{ route('admin.direccion.delete', $direccion->id) }}" method="POST"
-                                            onclick="return alertEliminar();">
+                                        <form action="{{ route('admin.direccion.delete', $direccion->id) }}" method="POST" class="form-delete">
                                             {{ csrf_field() }}
                                             <button  class="btn btn-danger btn-icon-split">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-trash"></i>
-                                                </span>
-                                                {{-- <input type="submit" value="Eliminair Usuario" class="text"> --}}
+                                                <i class="bi bi-trash"></i>
                                                 <span class="text">Eliminar Dirección</span>
                                             </button>
                                         </form>
-
                                     </td>
                                 </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                <a href="{{ route('admin.direccion.create') }}" class="btn btn-success btn-icon-split">
-                    <span class="icon text-white-600">
-                        <i class="fas fa-arrow-right"></i>
-                    </span>
-                    <span class="text">Nueva Dirección</span>
-                </a>
             </div>
         </div>
-
     </div>
     <footer class="card border-left-success border-bottom-secondary">
         <div class="container my-auto">
@@ -73,16 +60,40 @@
             </div>
         </div>
     </footer>
-    <!-- /.container-fluid -->
-    <script>
-        function alertEliminar(){
-        return confirm(
-            ["desea eliminar el registro?"],
-       Swal.fire({
-           confirmButtonText: 'registro eliminado'
-         })
+@endsection
 
-       )
-    }
+@section('css')
+    {{-- Boostrap icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+@stop
+
+@section('js')
+    @if (session('eliminar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'Direccion eliminada con exito.',
+                'success'
+            )
+        </script>
+    @endif
+    <script>
+        $('.form-delete').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: '¿Estas seguro?',
+                text: "¡Esta direccion se eliminara definitivamente!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        });
     </script>
 @endsection

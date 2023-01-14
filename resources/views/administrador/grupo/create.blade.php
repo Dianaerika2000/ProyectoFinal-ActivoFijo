@@ -1,7 +1,11 @@
-@extends('administrador.layouts.template')
-@section('header')
-    Crear Nuevo Grupo
-@endsection
+@extends('adminlte::page')
+
+@section('title', 'Grupo')
+
+@section('content_header')
+    <h1>Registrar Nuevo Grupo</h1>
+@stop
+
 @section('content')
     <div class="container">
 
@@ -24,7 +28,7 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="row g-3  needs-validation" novalidate action="{{ route('admin.grupo.store') }}"
+                            <form class="g-3  needs-validation" novalidate action="{{ route('admin.grupo.store') }}"
                                 method="POST">
                                 {{ csrf_field() }}
                                 <div class="item form-group">
@@ -52,3 +56,28 @@
 
     </div>
 @endsection
+
+@section('js')
+    {{-- Validaciones form --}}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+@stop

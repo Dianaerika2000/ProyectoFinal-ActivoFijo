@@ -1,13 +1,8 @@
-@extends('administrador.layouts.template')
-@section('header')
-    Editar Dirección
-@endsection
+@extends('adminlte::page')
+
+@section('title', 'Dirección')
+
 @section('content')
-    <!-- Google Font
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYG5g2aJ9TjMlbYk7E_VuFYKSvHC1Ee6Y&libraries=places" type="text/javascript"></script>
-    -->
     <style>
         #map-canvas {
             width: 500px;
@@ -17,17 +12,16 @@
         }
     </style>
 
-    <div class="container">
-
-        <div class="card o-hnameden border-0 shadow-lg my-5">
+    <div class="container pt-5">
+        <div class="card o-hnameden border-0 shadow-lg">
+            <div class="card-header py-3">
+                <h4 class="m-0">Editar Dirección</h4>
+            </div>
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg">
                         <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Editar Dirección</h1>
-                            </div>
                             @if ($errors->any())
                                 {{-- en caso de no eingresar las credenciales de acceso del administrador(muestra un error) --}}
                                 <div class="alert alert-danger">
@@ -76,9 +70,10 @@
 
                                     </div>
                                 </div>
-
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Editar">
-                                <hr>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                    <a type="button" class="btn btn-secondary" href="{{route('admin.direccion')}}">Cancelar</a>
+                                </div>
                             </form>
                             <hr>
                         </div>
@@ -89,6 +84,10 @@
 
     </div>
 
+@endsection
+
+@section('js')
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYG5g2aJ9TjMlbYk7E_VuFYKSvHC1Ee6Y&libraries=places" type="text/javascript"></script>
     <script>
         var map = new google.maps.Map(document.getElementById('map-canvas'), {
             center: {
@@ -126,4 +125,4 @@
             $('#lng').val(lng);
         });
     </script>
-@endsection
+@stop

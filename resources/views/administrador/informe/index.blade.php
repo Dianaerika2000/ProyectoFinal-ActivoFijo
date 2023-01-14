@@ -1,23 +1,27 @@
-@extends('administrador.layouts.template')
+@extends('adminlte::page')
 
-@section('header')
-    Gestionar Informes
-@endsection
+@section('title', 'Usuarios')
+
+@section('plugins.Sweetalert2', true)
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
+    <div class="container-fluid pt-4">
 
 
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Informes</h6>
+                <h4 class="m-0">Gestionar Informes</h4>
             </div>
             <div class="card-body">
+                <a href="{{ route('admin.informe.create') }}" class="btn btn-primary">
+                    <span class="text">Nuevo Informe</span>
+                    <i class="bi bi-plus-circle-fill"></i>
+                </a>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Descripción</th>
                                 <th>Fecha</th>
@@ -66,12 +70,7 @@
                         </tbody>
                     </table>
                 </div>
-                <a href="{{ route('admin.informe.create') }}" class="btn btn-success btn-icon-split">
-                    <span class="icon text-white-600">
-                        <i class="fas fa-arrow-right"></i>
-                    </span>
-                    <span class="text">Nuevo Informe</span>
-                </a>
+                
             </div>
         </div>
 
@@ -86,3 +85,39 @@
         </div>
     </footer>
 @endsection
+
+@section('css')
+    {{-- Boostrap icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+@stop
+
+@section('js')
+    @if (session('eliminar') == 'ok')
+        <script>
+            Swal.fire(
+                '¡Eliminado!',
+                'Usuario eliminado con exito.',
+                'success'
+            )
+        </script>
+    @endif
+    <script>
+        $('.form-delete').submit(function(e) {
+            e.preventDefault();
+            Swal.fire({
+                title: '¿Estas seguro?',
+                text: "¡Este usuario se eliminara definitvamente!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    this.submit();
+                }
+            })
+        });
+    </script>
+@stop

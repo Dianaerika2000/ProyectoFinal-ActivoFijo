@@ -15,6 +15,8 @@ use Illuminate\Http\Client\Request as ClientRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Nette\Utils\Json;
+use PhpParser\Node\Stmt\Label;
 
 class AdministradorController extends Controller
 {
@@ -36,11 +38,10 @@ class AdministradorController extends Controller
         /*  if(is_null($acceso)){
             return back()->withErrors(['error','el usuario no existe']);
         } */
-             /* dd($usuarios); */
+        /* dd($usuarios); */
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
-
         }
-       /*  dd($usuarios); */
+        /*  dd($usuarios); */
         return back()->withErrors(['error', 'la contraseña es incorrecta, o usted no es administrador']);
         /*  if (Auth::guard('acces')->attempt($credentials)) {
             return redirect()->route('admin.menu');
@@ -50,10 +51,6 @@ class AdministradorController extends Controller
 
     public function menu(Request $request)
     {
-        /*   $insumos=Insumo::all();
-        $detalleformulas=DetalleFormula::all();
-        $detalleinsumo=DetalleInsumo::all(); */
-
         //$formulas = Formula::all();
         $usuarios = Usuario::all();
         /*        $contador_menu=contador::find('acceso.login');//seria mas correcto */
@@ -63,7 +60,7 @@ class AdministradorController extends Controller
 
         /* codigo para resolver el char barras */
         $puntos = [];
-        $puntos2=[];
+        $puntos2 = [];
         /*
         foreach ($formulas as $informe) {
             $puntos[] = ['name' => $informe->nombre, 'y' => floatval($informe->montolote), 'drilldown' => $informe->nombre];
@@ -84,10 +81,32 @@ class AdministradorController extends Controller
             $puntos3[] = ['name' => $insumo->nombre, 'y' => floatval($insumo->detalleinsumo->precio), 'drilldown' => $insumo->nombre];
         }
         */
-     /*    dd($detalleformulas); */
-     $inmuebles=Inmueble::all();
-     $grupos=Grupo::all();
-        return view('administrador.menu', compact('contador_menu', 'usuarios','inmuebles','grupos'));
+        /*    dd($detalleformulas); */
+
+        /**
+         * ChartJs - Inmubles por grupo
+         */
+        $inmuebles = Inmueble::all();
+        $grupos = Grupo::all();
+
+        $dGrupo = [];
+
+        foreach ($grupos as $key => $grupo) {
+            $dGrupo['id'][] = $grupo->id;
+            $dGrupo['label'][] = $grupo->nombre;
+        }
+
+        $idGrupos = $dGrupo['id'];
+
+        foreach ($idGrupos as $key => $grupo) {
+            $dGrupo['data'][] = Inmueble::where('idGrupo', $grupo)->count();
+        }
+        //  $dGrupo['data'] = json_encode($dGrupo);
+        // dd($grupos);
+
+        // ChartJS
+
+        return view('administrador.menu', compact('contador_menu', 'usuarios', 'inmuebles', 'grupos', 'dGrupo'));
     }
 
     /* public function costo_formula(Request $request)
@@ -96,6 +115,29 @@ class AdministradorController extends Controller
         dd($detalleformulas);
         return redirect()->route('admin.menu');
     } */
+
+    public function estadisticas(Request $request)
+    {
+        /**
+         * ChartJs - Inmubles por grupo
+         */
+        $inmuebles = Inmueble::all();
+        $grupos = Grupo::all();
+
+        $label = [];
+        $data = [];
+
+        $idGrupos = [];
+        foreach ($grupos as $key => $grupo) {
+            $label[] = $grupo->nombre;
+            $idGrupos[] = $grupo->id;
+        }
+        // dd($label);
+        foreach ($idGrupos as $key => $id) {
+            $data[] = Inmueble::where('idGrupo', $id)->count();
+        }
+        return view('administrador.estadisticas.estadisticas', ['label' => $label, 'data' => $data]);
+    }
 
     public function logout()
     {

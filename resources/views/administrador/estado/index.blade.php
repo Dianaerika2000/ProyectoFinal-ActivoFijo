@@ -1,18 +1,16 @@
-@extends('administrador.layouts.template')
+@extends('adminlte::page')
 
-@section('header')
-    Gestionar Estados
-@endsection
+@section('title', 'Estado')
+
+@section('plugins.Sweetalert2', true)
 
 @section('content')
     <!-- Begin Page Content -->
-    <div class="container-fluid">
-
-
+    <div class="container-fluid pt-4">
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Estados</h6>
+                <h4 class="m-0">Gestionar Estados</h4>
             </div>
             <div class="card-body">
                 <a href="{{ route('admin.estado.create') }}" class="btn btn-primary btn-icon-split">
@@ -21,7 +19,7 @@
                 </a>
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Nombre</th>
                                 <th>Descripción</th>
@@ -82,9 +80,12 @@
     </script>
 @endsection
 
-@section('js')
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+@section('css')
+    {{-- Boostrap icon --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+@stop
 
+@section('js')
     @if (session('eliminar') == 'ok')
         <script>
             Swal.fire(
