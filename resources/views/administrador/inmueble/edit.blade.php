@@ -1,7 +1,7 @@
-@extends('administrador.layouts.template')
-@section('header')
-    Editar Inmueble {{ $inmueble->nombre }}
-@endsection
+@extends('adminlte::page')
+
+@section('title', 'Inmueble')
+
 @section('content')
     <?php
     $latitud="";
@@ -16,17 +16,17 @@
             max-height: 100vh;
         }
     </style>
-    <div class="container">
+    <div class="container pt-5">
 
-        <div class="card o-hnameden border-0 shadow-lg my-5">
+        <div class="card o-hnameden border-0 shadow-lg">
+            <div class="card-header py-3">
+                <h4 class="m-0">Editar Inmueble</h4>
+            </div>
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12">
                         <div class="p-5">
-                            <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Editar Inmueble</h1>
-                            </div>
                             @if ($errors->any())
                                 {{-- en caso de no eingresar las credenciales de acceso del administrador(muestra un error) --}}
                                 <div class="alert alert-danger">
@@ -142,10 +142,11 @@
                                         </select>
                                     </div>
                                 </div>
-
-
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="Editar Registro">
-                                <hr>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary">Editar</button>
+                                    <a type="button" class="btn btn-secondary"
+                                        href="{{ route('admin.inmueble') }}">Cancelar</a>
+                                </div>
                             </form>
                             <hr>
                         </div>
@@ -208,3 +209,113 @@
         });
     </script>
 @endsection
+
+@section('js')
+    {{-- cdn google maps --}}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYG5g2aJ9TjMlbYk7E_VuFYKSvHC1Ee6Y&libraries=places"
+        type="text/javascript"></script>
+    <script>
+        $(function() {
+            $('#idInmueble').hide();
+            $('#idGrupo').change(function() {
+                if ($('#idGrupo').val() != 2) {
+                    $('#idInmueble').show();
+                } else {
+                    $('#idInmueble').hide();
+                }
+            });
+        });
+
+        $(function() {
+            $('#idDireccion').change(function() {
+                if ($('#idDireccion').val() > 0) {
+
+                    $('#label0').hide();
+                    $('#label1').hide();
+                    $('#label2').hide();
+                    $('#label3').hide();
+                    $('#label4').hide();
+
+                    $('#map-canvas').hide();
+                    $('#searchmap').hide();
+                    $('#lat').hide();
+                    $('#lng').hide();
+                    $('#descripcion').hide();
+                } else {
+                    $('#label0').show();
+                    $('#label1').show();
+                    $('#label2').show();
+                    $('#label3').show();
+                    $('#label4').show();
+
+                    $('#map-canvas').show();
+                    $('#searchmap').show();
+                    $('#lat').show();
+                    $('#lng').show();
+                    $('#descripcion').show();
+                }
+            });
+        });
+
+        var map = new google.maps.Map(document.getElementById('map-canvas'), {
+
+
+            center: {
+                lat: {{ $latitud }},
+                lng: {{ $longitud }}
+            },
+            zoom: 17
+        });
+
+        var marker = new google.maps.Marker({
+            position: {
+                lat: {{ $latitud }},
+                lng: {{ $longitud }}
+            },
+            map: map,
+            draggable: true
+        });
+
+        var searchBox = new google.maps.places.SearchBox(document.getElementById('searchmap'));
+        google.maps.event.addListener(searchBox, 'places_changed', function() {
+            var places = searchBox.getPlaces();
+            var bounds = new google.maps.LatLngBounds();
+            var i, place;
+            for (i = 0; place = places[i]; i++) {
+                bounds.extend(place.geometry.location);
+                marker.setPosition(place.geometry.location);
+            }
+            map.fitBounds(bounds);
+            map.setZoom(17);
+        });
+        google.maps.event.addListener(marker, 'position_changed', function() {
+            var lat = marker.getPosition().lat();
+            var lng = marker.getPosition().lng();
+            $('#lat').val(lat);
+            $('#lng').val(lng);
+        });
+    </script>
+
+    {{-- Validaciones form --}}
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (() => {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            const forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.from(forms).forEach(form => {
+                form.addEventListener('submit', event => {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+        })()
+    </script>
+@stop

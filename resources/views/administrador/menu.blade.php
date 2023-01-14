@@ -232,7 +232,7 @@
 @endsection
 
 @section('js')
-    {{-- cdn google maps --}}
+    {{-- api google maps --}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYG5g2aJ9TjMlbYk7E_VuFYKSvHC1Ee6Y&libraries=places"
         type="text/javascript"></script>
     <script>
